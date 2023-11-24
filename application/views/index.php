@@ -19,7 +19,7 @@
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="<?php echo site_url("../assets/img/favicon/favicon.ico"); ?>" />
+    <!-- <link rel="icon" type="image/x-icon" href="<?php echo site_url("../assets/img/favicon/favicon.ico"); ?>" /> -->
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -125,6 +125,9 @@
               <!-- /Logo -->
               <h4 class="mb-2">Welcome! 👋</h4>
               <p class="mb-4">Veuillez vous connecter. </p>
+              <?php if(isset($error)){
+                echo "<p style='color:grey'>".$error."</p>";
+              } ?>
 
               <form id="formAuthentication" class="mb-3" action="<?php echo site_url("Login/traitementlogin"); ?>" method="POST">
                 <div class="mb-3">

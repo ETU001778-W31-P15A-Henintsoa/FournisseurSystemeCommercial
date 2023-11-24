@@ -74,11 +74,11 @@ $active_group = 'db';
 $query_builder = TRUE;
 
 $db['db'] = array(
-	'dsn'	=> 'pgsql:host=localhost;dbname=systemecommercial',
+	'dsn'	=> 'pgsql:host=localhost;dbname=fournisseur',
 	'hostname' => 'localhost',
 	'username' => 'postgres',
 	'password' => 'postgres',
-	'database' => 'systemecommercial',
+	'database' => 'fournisseur',
 	'dbdriver' => 'pdo',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

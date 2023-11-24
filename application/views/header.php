@@ -137,7 +137,7 @@
                   </g>
                 </svg>
               </span>
-              <span class="app-brand-text demo menu-text fw-bolder ms-2">DIMPEX</span>
+              <span class="app-brand-text demo menu-text fw-bolder ms-2">Shoprite</span>
             </a>
 
             <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -151,31 +151,40 @@
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <!-- <i class="menu-icon tf-icons bx bx-lock-open-alt"></i> -->
-                <div data-i18n="Authentications">Authentications</div>
+                <div data-i18n="Authentications">Proforma</div>
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
+                  <a href=<?php echo site_url("ProformaController/versDemande"); ?> class="menu-link" target="_blank">
+                    <div data-i18n="Basic">Saisie de demande</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href=<?php echo site_url("ProformaController/versListeDemandeNonConvertie"); ?> class="menu-link" target="_blank">
+                    <div data-i18n="Basic">Convertir en pdf</div>
+                  </a>
+                </li>
+                <li class="menu-item">
                   <a href="" class="menu-link" target="_blank">
-                    <div data-i18n="Basic">Logout</div>
+                    <div data-i18n="Basic">Regroupement des offres</div>
                   </a>
                 </li>
               </ul>
             </li>
 
-              <li class="menu-item">
-                <a href="javascript:void(0);" class="menu-link menu-toggle">
-                  <!-- <i class="menu-icon tf-icons bx bx-lock-open-alt"></i> -->
-                  <div data-i18n="Authentications">enu 1</div>
-                </a>
-                <ul class="menu-sub">
-                  <li class="menu-item">
-                    <a href="" class="menu-link">
-                      <div data-i18n="Tables">Petit details 1</div>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-            </li>
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <!-- <i class="menu-icon tf-icons bx bx-lock-open-alt"></i> -->
+                <div data-i18n="Authentications">Mail</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="" class="menu-link" target="_blank">
+                    <div data-i18n="Basic">Envoie Mail</div>
+                  </a>
+                </li>
+              </ul>
+
           </ul>
         </aside>
         <!-- / Menu -->
