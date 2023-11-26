@@ -49,7 +49,7 @@ date_default_timezone_set('Africa/Nairobi');
             $pdf->writeHTML($data['content'], true, false, true, false, '');
             $data['pdf'] = $pdf;
             $this->load->view('Proforma', $data);
-            $nomPDF = "Proforma_".$client.".pdf";
+            $nomPDF = "Proforma_".$client."_".$date.".pdf";
             $pdf->Output($nomPDF, 'I');
         }
     }
