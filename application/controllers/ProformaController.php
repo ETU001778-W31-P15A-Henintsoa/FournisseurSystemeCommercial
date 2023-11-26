@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+date_default_timezone_set('Africa/Nairobi');
 
     class ProformaController extends CI_Controller {
 
@@ -31,14 +32,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $this->load->view('DemandeNonConvertie',$data);
         }
 
-        public function genererpdf(){
-            $iddemande=$_GET['idDemandeProforma'];
+        public function genererPDFContenu($iddemande) {
             $data['proforma']=$this->Proforma->avoirProforma($iddemande);
             $this->Generalisation->miseAJour("demandeProforma"," etat=1"," idDemandeProforma='".$iddemande."'");
             $this->load->view('Header');
-            $this->load->view('Proforma',$data);
-           // redirect("ProformaController/versListeDemandeNonConvertie");
-
+            return $this->load->view('Proforma', $data, true);
+        }
+        
+        public function genererpdf() {
+            $pdf = new TCPDF();
+            $iddemande=$_GET['idDemandeProforma'];
+            $client =$_GET['client'];
+            $date =$_GET['date'];
+            $pdf->AddPage();
+            $data['content'] = $this->genererPDFContenu($iddemande);
+            $pdf->writeHTML($data['content'], true, false, true, false, '');
+            $data['pdf'] = $pdf;
+            $this->load->view('Proforma', $data);
+            $nomPDF = "Proforma_".$client.".pdf";
+            $pdf->Output($nomPDF, 'I');
         }
     }
     //gdao

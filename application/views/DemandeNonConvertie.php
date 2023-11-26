@@ -30,7 +30,7 @@
                             <?= $demandeProforma[$i]->iddemandeproforma ?></td>
                             <td><?= $demandeProforma[$i]->dateinsertion ?></td>
                             <td><?= $demandeProforma[$i]->nom ?></td>
-                            <td><span class="badge bg-label-warning me-1"><a  href="<?php echo site_url('ProformaController/genererpdf?idDemandeProforma='.$demandeProforma[$i]->iddemandeproforma); ?>">Generer PDF</a></span></td>
+                            <td><span class="badge bg-label-warning me-1"><a  href="<?php echo site_url('ProformaController/genererpdf?idDemandeProforma='.$demandeProforma[$i]->iddemandeproforma."&client=".$demandeProforma[$i]->nom."&date=".$demandeProforma[$i]->dateinsertion); ?>">Generer PDF</a></span></td>
                         </tr>
                         <?php } ?>  
                       </tbody>
