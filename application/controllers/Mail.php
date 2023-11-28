@@ -23,7 +23,7 @@ class Mail extends CI_Controller {
 	 */
 	
 	public function upload_file() {
-        $dossier =  APPPATH. 'upload/';
+        $dossier =  FCPATH. 'upload/';
 		$fichier = basename($_FILES['piecejointe']['name']);
 		$taille_maxi = 1000000000000;
 		$taille = filesize($_FILES['piecejointe']['tmp_name']);
@@ -70,6 +70,7 @@ class Mail extends CI_Controller {
 	public function versAfficheMessages(){
 		$idclient = $this->input->get('idclient');
 		$client = $this->Generalisation->avoirTableSpecifique('client', '*', sprintf("idclient='%s'", $idclient));
+		// var_dump($client);
 		$mailclient = $this->Connexion->avoirTableConditionnee("adressemail where adressemail like '".$client[0]->adressemail."'");
 		// var_dump($mailclient);
 		$data['messages'] = $this->Mail_modele->message($mailclient[0]);
@@ -94,11 +95,11 @@ class Mail extends CI_Controller {
 		$idclient = $this->input->post('idclient');
 		$pj="";
 
-		var_dump($_FILES['piecejointe']);
+		// var_dump($_FILES['piecejointe']);
 		
 		if(isset($_FILES['piecejointe'])){
 			$pj = $this->upload_file();
-			$this->Mail_modele->copierPdf();
+			$this->Mail_modele->copierPdf($pj);
 		}
 
 		if($mail=="" || $message==""){

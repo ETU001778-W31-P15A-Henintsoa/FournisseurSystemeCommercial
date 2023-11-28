@@ -136,7 +136,7 @@
         }
 
         // Fonctions Fonctionnelles
-        public function envoieMail($destinataire, $message, $fichier, $idregroupement){
+        public function envoieMail($destinataire, $message, $fichier){
             $mail = $this->monMail();
             $message = "Reponse de Proforma//".$message;
             

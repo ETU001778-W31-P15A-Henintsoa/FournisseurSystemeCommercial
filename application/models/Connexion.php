@@ -29,7 +29,7 @@ class Connexion extends CI_Model {
     public function avoirTableConditionnee($NomTable){
         $pdo = $this->getConnection();
         $query = "SELECT * FROM ".$NomTable;
-        // echo $query;
+        echo $query;
         $result = $pdo->query($query);
         $resultats = array();
         $a=0;

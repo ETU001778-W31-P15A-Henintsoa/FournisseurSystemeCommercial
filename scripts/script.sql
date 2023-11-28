@@ -132,5 +132,5 @@ create table Entreprise(
 
 alter table client add adressemail varchar(50);
 
-update client set adressemail='dimpexenterprise@gmail.com'
+update client set adressemail='dimpex@gmail.com'
 

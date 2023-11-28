@@ -7,7 +7,7 @@ date_default_timezone_set('Africa/Nairobi');
         public function versDemande(){
             $data['client']=$this->Generalisation->avoirTable("client");
             $data['article']=$this->Generalisation->avoirTable("article");
-            $this->load->view('Header');
+            $this->load->view('header');
             $this->load->view('SaisieDemandeProforma',$data);
         }
         public function entrerDemande(){
@@ -28,14 +28,14 @@ date_default_timezone_set('Africa/Nairobi');
 
         public function versListeDemandeNonConvertie(){ // demande de profor
             $data['demandeProforma']=$demandeProforma=$this->Generalisation->avoirTableSpecifique("v_demandeProformaClient","*"," etat=0");
-            $this->load->view('Header');
+            $this->load->view('header');
             $this->load->view('DemandeNonConvertie',$data);
         }
 
         public function genererPDFContenu($iddemande) {
             $data['proforma']=$this->Proforma->avoirProforma($iddemande);
             $this->Generalisation->miseAJour("demandeProforma"," etat=1"," idDemandeProforma='".$iddemande."'");
-            $this->load->view('Header');
+            $this->load->view('header');
             return $this->load->view('Proforma', $data, true);
         }
         
