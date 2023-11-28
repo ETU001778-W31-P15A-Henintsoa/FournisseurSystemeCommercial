@@ -107,4 +107,30 @@ create table detailDemandeProforma(
     quantite float,
     foreign key(idArticle) references article(idArticle)
 );
+
 alter table detailDemandeProforma add idDemandeProforma varchar(20), add constraint haha foreign key(idDemandeProforma) references demandeProforma(idDemandeProforma);
+
+------------------------------------ VILLE ---------------------------------------
+create sequence seqVille;
+create table Ville(
+    idVille varchar(20) default concat('VILLE' || nextval('seqVille')) primary key,
+    nomVille varchar(30) -- Nom de la ville
+);
+
+------------------------------------ ENTREPRISE ---------------------------------------
+create sequence seqEntreprise;
+create table Entreprise(
+    idEntreprise varchar(20) default concat('ENT' || nextval('seqEntreprise')) primary key,
+    nomEntreprise varchar(20),
+    adresse varchar(50),
+    numerofax varchar(20),
+    contact varchar(15),
+    adressemail varchar(50),
+    idVille varchar(20),
+    foreign key (idVille) references  Ville(idVille)
+);
+
+alter table client add adressemail varchar(50);
+
+update client set adressemail='dimpexenterprise@gmail.com'
+

@@ -22,3 +22,12 @@ insert into stock values
 ---------------------------------proforma----------------------------------------------------------
 insert into demandeProforma(dateInsertion,idClient) values('26-11-2023','CLI1');
 insert into detailDemandeProforma(idArticle,quantite) values('ART1',10);
+
+------------------------------------ VILLE ---------------------------------------
+insert into Ville(nomVille) values
+ ('Antananarivo'),
+ ('Antsirable');
+
+------------------------------------ Entreprise ---------------------------------------
+insert into entreprise(nomEntreprise, adresse, numerofax, contact, adressemail, idVille) values
+('JUMBO', 'Lot 44BC BIS Andoharanofotsy', '00499221/709-338', '+261 332178522', 'jumbo@gmail.com', 'VILLE1');

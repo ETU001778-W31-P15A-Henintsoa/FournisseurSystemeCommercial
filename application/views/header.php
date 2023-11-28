@@ -184,6 +184,14 @@
                   </a>
                 </li>
               </ul>
+            </li>
+            
+            <li class="menu-item">
+                <a href=<?php echo site_url('mail/versListeFournisseur'); ?> class="menu-link">
+                  <!-- <i class="menu-icon tf-icons bx bx-lock-open-alt"></i> -->
+                  <div data-i18n="Authentications">Messages/Mail</div>
+                </a>
+            </li>
 
           </ul>
         </aside>
