@@ -119,7 +119,7 @@
                       </g>
                     </svg>
                   </span>
-                  <span class="app-brand-text demo text-body fw-bolder">DIMPEX</span>
+                  <span class="app-brand-text demo text-body fw-bolder">JUMBO SCORE</span>
                 </a>
               </div>
               <!-- /Logo -->
