@@ -107,4 +107,134 @@ create table detailDemandeProforma(
     quantite float,
     foreign key(idArticle) references article(idArticle)
 );
+<<<<<<< Updated upstream
 alter table detailDemandeProforma add idDemandeProforma varchar(20), add constraint haha foreign key(idDemandeProforma) references demandeProforma(idDemandeProforma);
+=======
+
+alter table detailDemandeProforma add idDemandeProforma varchar(20), add constraint haha foreign key(idDemandeProforma) references demandeProforma(idDemandeProforma);
+
+------------------------------------ VILLE ---------------------------------------
+create sequence seqVille;
+create table Ville(
+    idVille varchar(20) default concat('VILLE' || nextval('seqVille')) primary key,
+    nomVille varchar(30) -- Nom de la ville
+);
+
+------------------------------------ ENTREPRISE ---------------------------------------
+create sequence seqEntreprise;
+create table Entreprise(
+    idEntreprise varchar(20) default concat('ENT' || nextval('seqEntreprise')) primary key,
+    nomEntreprise varchar(20),
+    adresse varchar(50),
+    numerofax varchar(20),
+    contact varchar(15),
+    adressemail varchar(50),
+    idVille varchar(20),
+    foreign key (idVille) references  Ville(idVille)
+);
+
+alter table client add adressemail varchar(50);
+
+update client set adressemail='dimpex@gmail.com';
+
+-- -------------------------Santatra 05-12-2023--------------------------------------
+create sequence seqBonDeCommande;
+create table BonDeCommande(
+    idBonDeCommande varchar(20) default concat('BDC' || nextval('seqBonDeCommande')) primary key,
+    idClient varchar(20),
+    dateInsertion date default current_date,
+    etat int default 0,
+    foreign key(idClient) references Client(idClient)
+);
+
+create sequence seqDetailBonDeCommande;
+create table DetailBonDeCommande(
+    idDetailBonDeCommande varchar(20) default concat('DBDC' || nextval('seqDetailBonDeCommande')) primary key,
+    idBonDeCommande varchar(20),
+    idArticle varchar(20),
+    quantite float,
+    foreign key(idBonDeCommande) references BonDeCommande(idBonDeCommande),
+    foreign key(idArticle) references Article(idArticle)
+);
+
+create sequence seqBonDeSortie;
+create table BonDeSortie(
+    idBonDeSortie varchar(20) default concat('BDS' || nextval('seqBonDeSortie')) primary key,
+    dateInsertion date default current_date,
+    idBonDeCommande varchar(20),
+    etat int default 0,
+    foreign key(idBonDeCommande) references BonDeCommande(idBonDeCommande)
+);
+
+create sequence seqDetailBonDeSortie;
+create table DetailBonDeSortie(
+    idDetailBonDeSortie varchar(20) default concat('DBS' || nextval('seqDetailBonDeSortie')) primary key,
+    idBonDeSortie varchar(20),
+    idArticle varchar(20),
+    quantite float,
+    foreign key(idBonDeSortie) references BonDeSortie(idBonDeSortie),
+    foreign key(idArticle) references Article(idArticle)
+);
+
+-- -------------------------Santatra 06-12-2023--------------------------------------
+create sequence seqCategorie;
+create table Categorie(
+    idCategorie varchar(20) default concat('CAT' || nextval('seqCategorie')) primary key,
+    nomCategorie varchar(20)
+);
+
+alter table Article add column categorie varchar(20),add constraint categorie foreign key(categorie) references Categorie(idCategorie);
+
+alter table stock add column dateinsertion date;
+
+create sequence seqLivraison;
+create table BonDeLivraison(
+    idBonDeLivraison varchar(20) default concat('LIV' || nextval('seqLivraison')) primary key,
+    dateLivraison date,
+    dateinsertion date default current_date,
+    idBonDeSortie varchar(20),
+    etat int default 0,
+    foreign key(idBonDeSortie) references BonDeSortie(idBonDeSortie)
+);
+
+create sequence seqDetailLivraison;
+create table DetailBonDeLivraison(
+    idDetailBonDeLivraison varchar(20) default concat('DLIV' || nextval('seqDetailLivraison')) primary key,
+    idBonDeLivraison varchar(20),
+    idArticle varchar(20),
+    quantite float,
+    foreign key(idBonDeLivraison) references BonDeLivraison(idBonDeLivraison),
+    foreign key(idArticle) references Article(idArticle)
+);
+
+create sequence seqFacture;
+CREATE TABLE facture(
+    idFacture varchar(20) default concat('FACT' || nextval('seqFacture')) primary key,
+    idBonDeCommande varchar(20),
+    dateFacturation date default current_date,
+    paiement int, --jour de paiement exemple 30j
+    TVA float,
+    etat int default 0,
+    foreign key(idBonDeCommande) references BonDeCommande(idBonDeCommande)
+);
+
+create sequence seqDetailFacture;
+CREATE TABLE DetailFacture(
+    idDetailFacture varchar(20) default concat('DFACT' || nextval('seqDetailFacture')) primary key,
+    idFacture varchar(20),
+    idArticle varchar(20),
+    quantite float,
+    prixUnitaire float, --prix de vente a calculer
+    foreign key(idFacture) references Facture(idFacture),
+    foreign key(idArticle) references Article(idArticle)
+);
+
+create sequence seqMouvement;
+create table Mouvement(
+    idMouvement varchar(20) default concat('MVT' || nextval('seqMouvement')) primary key,
+    dateMouvement date default current_date,
+    idStock varchar(20),
+    quantiteretirer float,
+    foreign key(idStock) references Stock(idStock)
+);
+>>>>>>> Stashed changes
