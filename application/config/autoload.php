@@ -135,7 +135,9 @@ $autoload['language'] = array();
 |	$autoload['model'] = array('first_model' => 'first');
 */
 
-$autoload['model'] = array('Generalisation','Proforma', 'Connexion', 'Mail_modele', 'Login_modele','BonDeSortie_modele');
+
+$autoload['model'] = array('Generalisation','Proforma', 'Connexion', 'Mail_modele', 'Login_modele','BonDeSortie_modele','Facture_modele');
+
 
 
 

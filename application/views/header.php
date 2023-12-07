@@ -155,17 +155,17 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href=<?php echo site_url("ProformaController/versDemande"); ?> class="menu-link" target="_blank">
+                  <a href=<?php echo site_url("ProformaController/versDemande"); ?> class="menu-link">
                     <div data-i18n="Basic">Saisie de demande</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href=<?php echo site_url("ProformaController/versListeDemandeNonConvertie"); ?> class="menu-link" target="_blank">
+                  <a href=<?php echo site_url("ProformaController/versListeDemandeNonConvertie"); ?> class="menu-link">
                     <div data-i18n="Basic">Convertir en pdf</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="" class="menu-link" target="_blank">
+                  <a href="" class="menu-link">
                     <div data-i18n="Basic">Regroupement des offres</div>
                   </a>
                 </li>
@@ -179,7 +179,7 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="" class="menu-link" target="_blank">
+                  <a href="" class="menu-link">
                     <div data-i18n="Basic">Envoie Mail</div>
                   </a>
                 </li>
@@ -200,12 +200,12 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href=<?php echo site_url("BonDeCommande/versSaisieCommande"); ?> class="menu-link" target="_blank">
+                  <a href=<?php echo site_url("BonDeCommande/versSaisieCommande"); ?> class="menu-link">
                     <div data-i18n="Basic">Saisie de bon de commande</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href=<?php echo site_url("BonDeCommande/versListeBonDeCommande"); ?> class="menu-link" target="_blank">
+                  <a href=<?php echo site_url("BonDeCommande/versListeBonDeCommande"); ?> class="menu-link">
                     <div data-i18n="Basic">Listes bon de commande</div>
                   </a>
                 </li>
@@ -219,7 +219,7 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href=<?php echo site_url("BonDeSortie/versListeBonDeSortie"); ?> class="menu-link" target="_blank">
+                  <a href=<?php echo site_url("BonDeSortie/versListeBonDeSortie"); ?> class="menu-link">
                     <div data-i18n="Basic">Listes bon de Sortie</div>
                   </a>
                 </li>
@@ -231,7 +231,46 @@
                 <!-- <i class="menu-icon tf-icons bx bx-lock-open-alt"></i> -->
                 <div data-i18n="Authentications">Bon de Livraison</div>
               </a>
-             
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href=<?php echo site_url("BonDeLivraison/versListeBonDeLivraison"); ?> class="menu-link">
+                    <div data-i18n="Basic">Listes bon de Livraison</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <!-- <i class="menu-icon tf-icons bx bx-lock-open-alt"></i> -->
+                <div data-i18n="Authentications">Facture</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href=<?php echo site_url("Facture/versFormulaireFacture"); ?> class="menu-link">
+                    <div data-i18n="Basic">Generer un facture</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href=<?php echo site_url("Facture/versListeFacture"); ?> class="menu-link">
+                    <div data-i18n="Basic">Liste des factures</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <!-- <i class="menu-icon tf-icons bx bx-lock-open-alt"></i> -->
+                <div data-i18n="Authentications">Achat</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href=<?php echo site_url("Achat/versFormulaireStock"); ?> class="menu-link">
+                    <div data-i18n="Basic">Inserer dans Stock</div>
+                  </a>
+                </li>
+              </ul>
             </li>
 
           </ul>

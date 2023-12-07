@@ -2,7 +2,7 @@
             <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Bon de</span> Commande</h4>
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Bon de</span> Livraison</h4>
 
         <!-- Logo -->
         
@@ -22,8 +22,11 @@
             <div class="col-xl">
                 <div class="card mb-4">
                     <div class="card-body">
-                        <p for=""><strong>Bon de Commande N : </strong> <?php echo $detail[0]->idbondecommande; ?></p>
+                        <p for=""><strong>Bon de Livraison N : </strong> <?php echo $detail[0]->idbondelivraison; ?></p>
+                        <p for=""><strong>Date de livraison: </strong> <?php echo $detail[0]->datelivraison; ?></p>
+                        <p for=""><strong>Numero de Commande : </strong> <?php echo $detail[0]->idbondecommande; ?></p>
                         <p for=""><strong>Client : </strong> <?php echo $detail[0]->nom; ?></p>
+                        <p for=""><strong>Lieu de livraison : </strong> <?php echo $detail[0]->adresse ."</br>".$detail[0]->ville; ?></p>
                     </div>
                 </div>
             </div>
@@ -36,7 +39,7 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>Designation</th>
+                                <th>Article</th>
                                 <th>quantite</th>
                             </tr>
                         </thead>

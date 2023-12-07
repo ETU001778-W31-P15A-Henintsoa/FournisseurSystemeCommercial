@@ -16,10 +16,12 @@ class BonDeSortie extends CI_Controller {
                 if($resultat[$i]->quantite >= $reste) {
                     $quantite_enlever = $resultat[$i]->quantite - $reste;
                     $this->Generalisation->miseAJour("stock", "quantite=".$quantite_enlever, " idarticle='".$details->idarticle."' and idstock='".$resultat[$i]->idstock."'");
+                    $this->Generalisation->insertion("Mouvement(idStock,quantiteretirer)","('".$resultat[$i]->idstock."',".$reste.")");
                     $reste = 0;
                 }else {
                     $reste -= $resultat[$i]->quantite;
                     $this->Generalisation->miseAJour("stock", "quantite=0", " idarticle='".$details->idarticle."' and idstock='".$resultat[$i]->idstock."'");
+                    $this->Generalisation->insertion("Mouvement(idStock,quantiteretirer)","('".$resultat[$i]->idstock."',".$reste.")");
                 }
             }
 

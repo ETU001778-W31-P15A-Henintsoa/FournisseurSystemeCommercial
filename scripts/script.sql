@@ -140,6 +140,7 @@ create table BonDeCommande(
     idBonDeCommande varchar(20) default concat('BDC' || nextval('seqBonDeCommande')) primary key,
     idClient varchar(20),
     dateInsertion date default current_date,
+    etat int default 0,
     foreign key(idClient) references Client(idClient)
 );
 
@@ -158,6 +159,7 @@ create table BonDeSortie(
     idBonDeSortie varchar(20) default concat('BDS' || nextval('seqBonDeSortie')) primary key,
     dateInsertion date default current_date,
     idBonDeCommande varchar(20),
+    etat int default 0,
     foreign key(idBonDeCommande) references BonDeCommande(idBonDeCommande)
 );
 
@@ -200,4 +202,35 @@ create table DetailBonDeLivraison(
     quantite float,
     foreign key(idBonDeLivraison) references BonDeLivraison(idBonDeLivraison),
     foreign key(idArticle) references Article(idArticle)
+);
+
+create sequence seqFacture;
+CREATE TABLE facture(
+    idFacture varchar(20) default concat('FACT' || nextval('seqFacture')) primary key,
+    idBonDeCommande varchar(20),
+    dateFacturation date default current_date,
+    paiement int, --jour de paiement exemple 30j
+    TVA float,
+    etat int default 0,
+    foreign key(idBonDeCommande) references BonDeCommande(idBonDeCommande)
+);
+
+create sequence seqDetailFacture;
+CREATE TABLE DetailFacture(
+    idDetailFacture varchar(20) default concat('DFACT' || nextval('seqDetailFacture')) primary key,
+    idFacture varchar(20),
+    idArticle varchar(20),
+    quantite float,
+    prixUnitaire float, --prix de vente a calculer
+    foreign key(idFacture) references Facture(idFacture),
+    foreign key(idArticle) references Article(idArticle)
+);
+
+create sequence seqMouvement;
+create table Mouvement(
+    idMouvement varchar(20) default concat('MVT' || nextval('seqMouvement')) primary key,
+    dateMouvement date default current_date,
+    idStock varchar(20),
+    quantiteretirer float,
+    foreign key(idStock) references Stock(idStock)
 );

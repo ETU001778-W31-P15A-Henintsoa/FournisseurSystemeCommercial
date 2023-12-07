@@ -22,7 +22,16 @@ class BonDeLivraison extends CI_Controller {
     }
 
     public function versListeBonDeLivraison() {
-        
+        $data['bondelivraison'] = $this->Generalisation->avoirTableConditionnee("v_bondelivraison");
+        $this->load->view('header');
+        $this->load->view('ListeBonDeLivraison',$data);
+    }
+
+    public function versDetailBonDeLivraison() {
+        $idbondelivraison = $this->input->get('idbondelivraison');
+        $data['detail'] = $this->Generalisation->avoirTableAutrement("v_detaillivraison","*","where idbondelivraison='".$idbondelivraison."'");
+        $this->load->view('header');
+        $this->load->view('DetailBonDeLivraison',$data);
     }
  
 }
