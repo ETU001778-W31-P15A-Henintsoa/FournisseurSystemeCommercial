@@ -132,5 +132,72 @@ create table Entreprise(
 
 alter table client add adressemail varchar(50);
 
-update client set adressemail='dimpex@gmail.com'
+update client set adressemail='dimpex@gmail.com';
 
+-- -------------------------Santatra 05-12-2023--------------------------------------
+create sequence seqBonDeCommande;
+create table BonDeCommande(
+    idBonDeCommande varchar(20) default concat('BDC' || nextval('seqBonDeCommande')) primary key,
+    idClient varchar(20),
+    dateInsertion date default current_date,
+    foreign key(idClient) references Client(idClient)
+);
+
+create sequence seqDetailBonDeCommande;
+create table DetailBonDeCommande(
+    idDetailBonDeCommande varchar(20) default concat('DBDC' || nextval('seqDetailBonDeCommande')) primary key,
+    idBonDeCommande varchar(20),
+    idArticle varchar(20),
+    quantite float,
+    foreign key(idBonDeCommande) references BonDeCommande(idBonDeCommande),
+    foreign key(idArticle) references Article(idArticle)
+);
+
+create sequence seqBonDeSortie;
+create table BonDeSortie(
+    idBonDeSortie varchar(20) default concat('BDS' || nextval('seqBonDeSortie')) primary key,
+    dateInsertion date default current_date,
+    idBonDeCommande varchar(20),
+    foreign key(idBonDeCommande) references BonDeCommande(idBonDeCommande)
+);
+
+create sequence seqDetailBonDeSortie;
+create table DetailBonDeSortie(
+    idDetailBonDeSortie varchar(20) default concat('DBS' || nextval('seqDetailBonDeSortie')) primary key,
+    idBonDeSortie varchar(20),
+    idArticle varchar(20),
+    quantite float,
+    foreign key(idBonDeSortie) references BonDeSortie(idBonDeSortie),
+    foreign key(idArticle) references Article(idArticle)
+);
+
+-- -------------------------Santatra 06-12-2023--------------------------------------
+create sequence seqCategorie;
+create table Categorie(
+    idCategorie varchar(20) default concat('CAT' || nextval('seqCategorie')) primary key,
+    nomCategorie varchar(20)
+);
+
+alter table Article add column categorie varchar(20),add constraint categorie foreign key(categorie) references Categorie(idCategorie);
+
+alter table stock add column dateinsertion date;
+
+create sequence seqLivraison;
+create table BonDeLivraison(
+    idBonDeLivraison varchar(20) default concat('LIV' || nextval('seqLivraison')) primary key,
+    dateLivraison date,
+    dateinsertion date default current_date,
+    idBonDeSortie varchar(20),
+    etat int default 0,
+    foreign key(idBonDeSortie) references BonDeSortie(idBonDeSortie)
+);
+
+create sequence seqDetailLivraison;
+create table DetailBonDeLivraison(
+    idDetailBonDeLivraison varchar(20) default concat('DLIV' || nextval('seqDetailLivraison')) primary key,
+    idBonDeLivraison varchar(20),
+    idArticle varchar(20),
+    quantite float,
+    foreign key(idBonDeLivraison) references BonDeLivraison(idBonDeLivraison),
+    foreign key(idArticle) references Article(idArticle)
+);

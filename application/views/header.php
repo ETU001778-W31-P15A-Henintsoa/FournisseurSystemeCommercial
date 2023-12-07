@@ -193,6 +193,47 @@
                 </a>
             </li>
 
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <!-- <i class="menu-icon tf-icons bx bx-lock-open-alt"></i> -->
+                <div data-i18n="Authentications">Bon de Commande</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href=<?php echo site_url("BonDeCommande/versSaisieCommande"); ?> class="menu-link" target="_blank">
+                    <div data-i18n="Basic">Saisie de bon de commande</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href=<?php echo site_url("BonDeCommande/versListeBonDeCommande"); ?> class="menu-link" target="_blank">
+                    <div data-i18n="Basic">Listes bon de commande</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <!-- <i class="menu-icon tf-icons bx bx-lock-open-alt"></i> -->
+                <div data-i18n="Authentications">Bon de Sortie</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href=<?php echo site_url("BonDeSortie/versListeBonDeSortie"); ?> class="menu-link" target="_blank">
+                    <div data-i18n="Basic">Listes bon de Sortie</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <!-- <i class="menu-icon tf-icons bx bx-lock-open-alt"></i> -->
+                <div data-i18n="Authentications">Bon de Livraison</div>
+              </a>
+             
+            </li>
+
           </ul>
         </aside>
         <!-- / Menu -->
