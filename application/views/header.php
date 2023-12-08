@@ -270,6 +270,11 @@
                     <div data-i18n="Basic">Inserer dans Stock</div>
                   </a>
                 </li>
+                <li class="menu-item">
+                  <a href=<?php echo site_url("Achat/versFormulaireMarge"); ?> class="menu-link">
+                    <div data-i18n="Basic">Marge brute</div>
+                  </a>
+                </li>
               </ul>
             </li>
 

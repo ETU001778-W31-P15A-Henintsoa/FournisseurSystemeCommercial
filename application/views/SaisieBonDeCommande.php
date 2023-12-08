@@ -24,7 +24,7 @@
 <body>
     <form action="<?php echo site_url("BondeCommande/entrerCommande"); ?>" method="post" >
         <?php if(isset($error)){
-                echo "<p style='color:grey'>".$error."</p>";
+                echo "<p style='color:red'>".$error."</p>";
         } ?>
         <input type="hidden" value="1" name="nombreArticle" id="inputHidden">
         <div class="mb-3 row">

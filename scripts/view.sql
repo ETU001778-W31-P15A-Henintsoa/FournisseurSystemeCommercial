@@ -79,3 +79,10 @@ create or replace view v_detailFacture as
     from DetailFacture df 
         join v_facture vf on df.idFacture = vf.idFacture
         join Article a on a.idarticle = df.idarticle;
+
+-- -------------------------v_mouvement-----------------------
+create or replace view v_mouvement as
+    select a.nomArticle,s.*,m.dateMouvement,m.quantiteretirer
+    from stock s
+        join Mouvement m on m.idstock = s.idstock
+        join Article a on a.idarticle = s.idArticle;
