@@ -27,7 +27,7 @@ class BonDeSortie extends CI_Controller {
 
             $this->Generalisation->insertion("DetailBonDeSortie(idbondesortie,idarticle,quantite)", "('".$BonDeSortie[0]->idbondesortie."','".$details->idarticle."',".$details->quantite.")");
         }
-        redirect('BonDeCommande/versSaisieCommande');
+        redirect('BonDeSortie/versListeBonDeSortie');
     }
 
     public function versListeBonDeSortie() {

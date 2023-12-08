@@ -136,9 +136,15 @@ $autoload['language'] = array();
 */
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 $autoload['model'] = array('Generalisation','Proforma');
 =======
 $autoload['model'] = array('Generalisation','Proforma', 'Connexion', 'Mail_modele', 'Login_modele','BonDeSortie_modele','Facture_modele');
+>>>>>>> Stashed changes
+=======
+
+$autoload['model'] = array('Generalisation','Proforma', 'Connexion', 'Mail_modele', 'Login_modele','BonDeSortie_modele','Facture_modele','Marge_modele');
+
 >>>>>>> Stashed changes
 
 
