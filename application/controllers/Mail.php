@@ -57,12 +57,12 @@ class Mail extends CI_Controller {
 		else //Sinon (la fonction renvoie FALSE).
 		{
 			$erreur = 'Echec de l\'upload !';
-			// redirect("Mail/versEnvoieMail?erreur=".$erreur);
+			redirect("Mail/versEnvoieMail?erreur=".$erreur);
 		}
 		}
 		else
 		{
-			// redirect("Mail/versEnvoieMail?erreur=".$erreur);
+			redirect("Mail/versEnvoieMail?erreur=".$erreur);
 		}
 		return $_FILES['piecejointe']['name'];
     }

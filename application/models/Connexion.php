@@ -29,7 +29,7 @@ class Connexion extends CI_Model {
     public function avoirTableConditionnee($NomTable){
         $pdo = $this->getConnection();
         $query = "SELECT * FROM ".$NomTable;
-        echo $query;
+        // echo $query;
         $result = $pdo->query($query);
         $resultats = array();
         $a=0;
@@ -48,7 +48,7 @@ class Connexion extends CI_Model {
     public function insertion($NomTable, $values){ // Metre values comme => '(data1, data2, 'data3')' par exemple
         $pdo = $this->getConnection();
         $sql = sprintf('insert into %s values%s',$NomTable, $values);
-        echo $sql;
+        // echo $sql;
         $pdo->query($sql);
     }
 }

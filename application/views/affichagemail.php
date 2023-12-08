@@ -34,7 +34,7 @@
                 <div class="card mb-3" id="conteneur-message">
                     <?php foreach($messages as $message){ 
                         // var_dump($message);
-                        if($message['etat']==1){ ?>
+                        if($message['etat']!=1){ ?>
                             <!-- <div class="messaging-container"> -->
                             <div class="mb-3 person person-1">
                             <?php //echo base_url("upload/".$message['piecejointe'] );?>
@@ -42,8 +42,9 @@
                                 <div id="icone"><i class="fas fa-user"></i></div>
                                 <div id="icone" class="bubble2">
                                     <div class="message"><?= explode("//", $message['libelle'])[1] ?></div>
+                                    <br>
                                     <?php if($message['p']==1){ ?>
-                                        <div><iframe src=<?= base_url("upload/".$message['piecejointe'])?> alt=<?= $message['piecejointe'] ?>></iframe></div>
+                                        <div><img src="pdf.png" alt=<?= $message['piecejointe'] ?>></div>
                                     <?php } ?>    
                                 </div>
                                 
@@ -54,8 +55,9 @@
                        <!-- <i class="fas fa-user"></i> -->
                        <div class="bubble1">
                             <div class="message"><?= explode("//", $message['libelle'])[1] ?></div>
+                            <br>
                             <?php if($message['p']==1){ ?>
-                                <div><iframe src="<?= base_url("upload/".$message['piecejointe']) ?>" alt=<?= $message['piecejointe'] ?>></iframe></div>
+                                <div><img src="pdf.png" alt=<?= $message['piecejointe'] ?>></div>
                             <?php } ?>
                         </div>
                         <div id="date"><?= $message['dateenvoie'] ?></div>
