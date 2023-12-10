@@ -19,6 +19,9 @@ insert into stock values
 (default,'ART2',100,'2023-12-22',1500),
 (default,'ART3',100,'2023-12-22',3000);
 
+---------------------------------proforma----------------------------------------------------------
+insert into demandeProforma(dateInsertion,idClient) values('26-11-2023','CLI1');
+insert into detailDemandeProforma(idArticle,quantite) values('ART1',10);
 ------------------------------------ VILLE ---------------------------------------
 insert into Ville(nomVille) values
  ('Antananarivo'),
@@ -38,4 +41,3 @@ update Article set categorie='CAT3' where idarticle='ART3';
 update stock set dateinsertion='2023-11-21' where idstock='STO1';
 update stock set dateinsertion='2023-11-21' where idstock='STO2';
 update stock set dateinsertion='2023-11-21' where idstock='STO3';
-update stock set dateinsertion='2023-11-25' where idstock='STO4';

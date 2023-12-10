@@ -20,7 +20,7 @@
                       <div class="mb-3">
                             <label for="defaultSelect" class="form-label">Numero de commande</label>
                             <select id="defaultSelect" class="form-select" name="bondecommande">
-                            <?php for($i=0;$i<=count($bondecommande);$i++) { ?>
+                            <?php for($i=0;$i<count($bondecommande);$i++) { ?>
                                 <option value="<?php echo $bondecommande[$i]->idbondecommande; ?>"><?php echo $bondecommande[$i]->idbondecommande."_". $bondecommande[$i]->dateinsertion."_".$bondecommande[$i]->nom; ?> </option>
                             <?php } ?>
                             </select>
