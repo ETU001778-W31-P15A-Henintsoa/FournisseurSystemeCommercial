@@ -89,6 +89,14 @@ class Mail extends CI_Controller {
 		$this->load->view('listeClients', $data);
 	}
 
+	public function versListeDepartement(){
+		// $idEmploye=$_SESSION['user'];
+		// $employePoste=$this->Connexion->avoirTableCanditionnee("v_posteEmployeValidation where idemploye='".$idEmploye."'");
+		$data['client'] = $this->Generalisation->avoirTable('client');
+		$this->load->view('header');
+		$this->load->view('listeClients', $data);
+	}
+
 	public function envoieMail(){
 		$mail = $this->input->post('idmailclient');
 		$message = $this->input->post('reponse');
@@ -110,5 +118,9 @@ class Mail extends CI_Controller {
 
 		redirect("Mail/versAfficheMessages?idclient=".$idclient);
 	}
+
+	// public envoyerMailDepartement(){
+
+	// }
 
 }
