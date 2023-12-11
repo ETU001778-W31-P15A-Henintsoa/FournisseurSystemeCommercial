@@ -47,7 +47,12 @@ INSERT INTO Departement (nomDepartement)
 VALUES
     ('logistique'),
     ('Service livraison'),
-    ('Finance');
+    ('Finance');insert into validation(idBrancheDepartement,libelle) values
+('BDEPT4','magasin');
+insert into validation(idBrancheDepartement,libelle) values
+('BDEPT5','livraison');
+insert into validation(idBrancheDepartement,libelle) values
+('BDEPT6','vente');
 
  ----------------------------------------------departement-------------------------------------------------
 INSERT INTO Employe (nom, prenom, adresse, matricule, dateNaissance, mail, motDePasse, etat)
@@ -71,14 +76,14 @@ insert into brancheDepartement(idBranche,idDepartement) values
 
 --------------------------------------Poste EMploye-----------------------------------------------------------
 insert into employePoste(idBrancheDepartement,dateEmbauche,idEmploye) values
-('BDEPT1','2021-02-04','EMP1'),
-('BDEPT2','2020-02-04','EMP2'),
-('BDEPT3','2022-02-04','EMP3');
+('BDEPT4','2021-02-04','EMP1'),
+('BDEPT5','2020-02-04','EMP2'),
+('BDEPT6','2022-02-04','EMP3');
 
 -- --------------------------------------Validation-----------------------------------------------------------
 insert into validation(idBrancheDepartement,libelle) values
-('BDEPT1','magasin');
+('BDEPT4','magasin');
 insert into validation(idBrancheDepartement,libelle) values
-('BDEPT2','livraison');
+('BDEPT5','livraison');
 insert into validation(idBrancheDepartement,libelle) values
-('BDEPT3','vente');
+('BDEPT6','vente');

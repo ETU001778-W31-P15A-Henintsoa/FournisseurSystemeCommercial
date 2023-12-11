@@ -26,5 +26,5 @@
             </div>
         </div>
         <div class="mb-3">
-            <button class="btn btn-primary d-grid w-100"><a href="">Envoie Mail</a></button>
+            <button class="btn btn-primary d-grid w-100"><a href="<?= site_url("Mail/envoieMailRetour?idclient=".$idclient."&erreur=".$erreur); ?>">Envoie Mail</a></button>
         </div>

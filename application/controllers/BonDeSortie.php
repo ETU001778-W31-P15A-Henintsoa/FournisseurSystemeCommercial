@@ -34,7 +34,7 @@ class BonDeSortie extends CI_Controller {
         }else {
             $data["error"]="Vous n'avez pas accès à sortir dans le stock";
             $this->load->view('header');
-            $this->load->view('errors/Erreur',$data);
+            $this->load->view('errors/erreur',$data);
         }
     }
 
@@ -48,7 +48,7 @@ class BonDeSortie extends CI_Controller {
         }else {
             $data["error"]="Vous n'avez pas accès à cette page";
             $this->load->view('header');
-            $this->load->view('errors/Erreur',$data);
+            $this->load->view('errors/erreur',$data);
         }
     }
 

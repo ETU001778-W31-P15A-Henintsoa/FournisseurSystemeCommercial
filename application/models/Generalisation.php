@@ -16,6 +16,7 @@ class Generalisation extends CI_Model {
 
     public function avoirTableConditionnee($NomTable){
         $sql = "SELECT * FROM $NomTable";
+        echo $sql;
         $query = $this->db->query($sql);
         $resultats = array();
         $a=0;

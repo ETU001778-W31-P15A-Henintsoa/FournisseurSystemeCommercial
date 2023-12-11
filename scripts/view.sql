@@ -69,7 +69,7 @@ create or replace view v_detailLivraison as
 
 -- ------------------------v_facture---------------------------- 
 create or replace view v_facture as
-    select vb.*,f.dateFacturation,f.paiement,f.TVA,f.etat,f.idFacture
+    select vb.*,f.dateFacturation,f.paiement,f.TVA,f.etat as etatFacture,f.idFacture
     from facture f
         join v_bondecommande vb on vb.idBonDeCommande = f.idBonDeCommande;
 

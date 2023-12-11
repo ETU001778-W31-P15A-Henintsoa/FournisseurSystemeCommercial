@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class BonDeCommande extends CI_Controller {
+class BondeCommande extends CI_Controller {
 
 	public function versSaisieCommande()
 	{
@@ -15,6 +15,7 @@ class BonDeCommande extends CI_Controller {
 		$societe = $this->input->post('idClient');
 		$valeur = intval($this->input->post('nombreArticle'));
 		$commandeValide = true; 
+		$erreur = "";
 		// $this->Generalisation->insertion("BonDeCommande(idClient)", "('" . $societe . "')");
 		// $BonDeCommande = $this->Generalisation->avoirTableAutrement("BonDeCommande", "*", " order by idBonDeCommande desc");
 		$quantite = 0;
@@ -29,6 +30,7 @@ class BonDeCommande extends CI_Controller {
 			if ($quantite < $_POST['quantite' . $i]) {
 				$commandeValide = false; 
 				$data['errors'][] = "Quantité non valide pour l'article:" . $donneeStock[0]->nomarticle . ". La quantité disponible est " . $quantite;
+				$erreur = $erreur."Quantité non valide pour l article:" . $donneeStock[0]->nomarticle . ". La quantité disponible est " . $quantite.".\n";
 			} else {
 
 				if ($i === 1) {
@@ -38,6 +40,9 @@ class BonDeCommande extends CI_Controller {
 				$this->Generalisation->insertion("DetailBonDeCommande(idbondecommande,idArticle,quantite)", "('" . $BonDeCommande[0]->idbondecommande . "','" . $_POST['article' . $i] . "'," . $_POST['quantite' . $i] . ")");
 			}
 		}
+
+		$data['erreur'] = $erreur;
+		$data['idclient'] = $societe;
 	
 		if (!$commandeValide) {
 			$data['error'] = implode('<br>', $data['errors']);

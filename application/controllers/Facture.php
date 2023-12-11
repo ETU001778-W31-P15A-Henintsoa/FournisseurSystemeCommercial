@@ -4,16 +4,21 @@
     class Facture extends CI_Controller {
 		
         public function versFormulaireFacture() {
-            $data['bondecommande'] = $this->Generalisation->avoirTableConditionnee("v_bondecommande");
-            // echo count($data['bondecommande']);
-            $this->load->view('header');
-            $this->load->view('FormulaireFacture',$data);
-        }
-
-        public function genererFacture() {
             $idEmploye = $_SESSION['user'];
             $employePoste=$this->Generalisation->avoirTableSpecifique("v_posteEmployeValidation","*"," idemploye='".$idEmploye."'");
             if($employePoste[0]->libelle == "vente") {
+                $data['bondecommande'] = $this->Generalisation->avoirTableConditionnee("v_bondecommande");
+                // echo count($data['bondecommande']);
+                $this->load->view('header');
+                $this->load->view('FormulaireFacture',$data);
+            }else {
+                $data["error"]="Vous n'avez pas accès à cette page";
+                $this->load->view('header');
+                $this->load->view('errors/erreur',$data);
+            }
+        }
+
+        public function genererFacture() {
                 $idbondecommande = $this->input->post('bondecommande');
                 $paiement = $this->input->post('paiement');
                 $tva = $this->input->post('tva');
@@ -26,11 +31,6 @@
                     $this->Generalisation->insertion("DetailFacture(idfacture,idarticle,quantite,prixunitaire)","('".$facture[0]->idfacture."','".$details->idarticle."',".$details->quantite.",".$prixVente.")");
                 }
                 redirect('Facture/versFormulaireFacture');
-            }else {
-                $data["error"]="Vous n'avez pas accès à cette page";
-                $this->load->view('header');
-                $this->load->view('errors/Erreur',$data);
-            }
         }
 
         public function versListeFacture() {
@@ -43,7 +43,7 @@
             }else {
                 $data["error"]="Vous n'avez pas accès à cette page";
                 $this->load->view('header');
-                $this->load->view('errors/Erreur',$data);
+                $this->load->view('errors/erreur',$data);
             }
         }
 

@@ -35,8 +35,8 @@
                                   <td><?= $detail[$i]->quantiteretirer; ?></td>
                                   <td><?= isset($prixVenteDetail[$i]) ? $prixVenteDetail[$i] : ''; ?></td>
                                   <td><?= isset($margeArticle[$i]) ? $margeArticle[$i] : ''; ?></td>
-                                  <td><?= isset($parVente[$i]) ? $parVente[$i] : ''; ?></td>
-                                  <td><?= isset($parStock[$i]) ? $parStock[$i] : ''; ?></td>
+                                  <td><?= isset($parVente[$i]) ? $parVente[$i] : ''; ?>%</td>
+                                  <td><?= isset($parStock[$i]) ? $parStock[$i] : ''; ?>%</td>
                               </tr>
                               <?php
                               // Initialize variables $parVente and $parStock if they are not already initialized
@@ -52,8 +52,8 @@
                               <td></td>
                               <td>Total</td>
                               <td><?= isset($margeBrute) ? $margeBrute : ''; ?></td>
-                              <td><?= $sommeParVente; ?></td>
-                              <td><?= $sommeParStock; ?></td>
+                              <td><?= $sommeParVente; ?>%</td>
+                              <td><?= $sommeParStock; ?>%</td>
                           </tr>
                       </tbody>
 

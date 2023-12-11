@@ -34,17 +34,19 @@
             $data['margeArticle'] =[];
             $data['parVente'] = [];
             $data['parStock'] = [];
+            $sortieprixVente = [];
+            $sortiePrixStock = [];
             for($i=0;$i<count($article);$i++) {
                 $prixVente = $this->Marge_modele->calculPrixDeVente($article[$i]->idarticle);
                 $sortie = $this->Marge_modele->avoirTotalSortie($datedebut,$datefin,$article[$i]->idarticle);
-                $sortiePrixVente = $sortie * $prixVente;
-                $sommeSortiePrixVente += $sortiePrixVente;
+                $sortiePrixVente[$i] = $sortie * $prixVente;
+                $sommeSortiePrixVente += $sortiePrixVente[$i];
                 $detailSortie = $this->Generalisation->avoirTableSpecifique("v_mouvement","*","datemouvement BETWEEN '".$datedebut."' and '".$datefin."' and idarticle='".$article[$i]->idarticle."'");
                 for($j=0;$j<count($detailSortie);$j++) {
-                    $sortiePrixStock = $detailSortie[$j]->quantiteretirer * $detailSortie[$j]->prixunitaire;
+                    $sortiePrixStock[$i] = $detailSortie[$j]->quantiteretirer * $detailSortie[$j]->prixunitaire;
                 }
-                $sommeSortiePrixStock += $sortiePrixStock;
-                $data['margeArticle'][$i] = $sortiePrixVente - $sortiePrixStock;
+                $sommeSortiePrixStock += $sortiePrixStock[$i];
+                $data['margeArticle'][$i] = $sortiePrixVente[$i] - $sortiePrixStock[$i];
             }
             
             $data['prixVenteDetail'] = [];
@@ -53,8 +55,10 @@
             $data['detail'] = $this->Generalisation->avoirTableSpecifique("v_mouvement","*","datemouvement BETWEEN '".$datedebut."' and '".$datefin."'");
             for($j=0;$j<count($data['detail']);$j++){
                 $data['prixVenteDetail'][$j] = $this->Marge_modele->calculPrixDeVente($data['detail'][$j]->idarticle);
-                $data['parVente'][$j] = $data['margeArticle'][$j] / $sortiePrixVente;
-                $data['parStock'][$j] = $data['margeArticle'][$j] / $sortiePrixStock;
+                // echo $data['margeArticle'][$j] ." / ".$sortiePrixVente[$j]."</br>";
+                // echo $data['margeArticle'][$j] ." / ".$sortiePrixStock[$j]."</br>";
+                $data['parVente'][$j] = ($data['margeArticle'][$j] / $sortiePrixVente[$j])*100;
+                $data['parStock'][$j] = ($data['margeArticle'][$j] / $sortiePrixStock[$j])*100;
             }
             $data['datedebut'] = $datedebut;
             $data['datefin'] = $datefin;

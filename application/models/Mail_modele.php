@@ -151,7 +151,7 @@
 
             $this->Connexion->insertion("mail(dateenvoie, envoyeur, destinataire)", sprintf("(current_date, '%s', '%s')", $mail['idadressemail'], $destinataire));
             
-            $mails = $this->Connexion->avoirTableConditionnee("mail order by idmail");
+            $mails = $this->Connexion->avoirTableConditionnee("mail order by dateenvoie ");
 
             $this->Connexion->insertion("message(idmail, libelle, piecejointe)", sprintf("('%s', '%s', '%s')", $mails[count($mails)-1]['idmail'], $message, $fichier));
             
@@ -174,7 +174,7 @@
 
             $this->Connexion->insertion("mail(dateenvoie, envoyeur, destinataire)", sprintf("(current_date, '%s', '%s')", $envoyeur, $destinataire));
             
-            $mails = $this->Connexion->avoirTableConditionnee("mail order by idmail");
+            $mails = $this->Connexion->avoirTableConditionnee("mail order by dateenvoie ");
 
             $this->Connexion->insertion("message(idmail, libelle, piecejointe)", sprintf("('%s', '%s', '%s')", $mails[count($mails)-1]['idmail'], $message, $fichier));
             
@@ -209,6 +209,8 @@
 
                 $a++;
             }
+
+            // var_dump($messages);
 
             return $messages;
         }

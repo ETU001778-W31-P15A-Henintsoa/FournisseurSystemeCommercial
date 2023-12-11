@@ -243,3 +243,5 @@ create table validation(
     libelle varchar(40),
     foreign key(idBrancheDepartement) references brancheDepartement(idBrancheDepartement)
 );
+
+alter table branche add column nomBranche varchar(40);

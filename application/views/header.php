@@ -200,12 +200,12 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href=<?php echo site_url("BonDeCommande/versSaisieCommande"); ?> class="menu-link">
+                  <a href=<?php echo site_url("BondeCommande/versSaisieCommande"); ?> class="menu-link">
                     <div data-i18n="Basic">Saisie de bon de commande</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href=<?php echo site_url("BonDeCommande/versListeBonDeCommande"); ?> class="menu-link">
+                  <a href=<?php echo site_url("BondeCommande/versListeBonDeCommande"); ?> class="menu-link">
                     <div data-i18n="Basic">Listes bon de commande</div>
                   </a>
                 </li>

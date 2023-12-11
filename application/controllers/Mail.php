@@ -97,6 +97,15 @@ class Mail extends CI_Controller {
 		$this->load->view('listeClients', $data);
 	}
 
+	public function versEnvoieMailRetour(){
+		// $idEmploye=$_SESSION['user'];
+		// $employePoste=$this->Connexion->avoirTableCanditionnee("v_posteEmployeValidation where idemploye='".$idEmploye."'");
+		$data['client'] = $this->Generalisation->avoirTable('client');
+		$this->load->view('header');
+		$this->load->view('listeClients', $data);
+	}
+
+
 	public function envoieMail(){
 		$mail = $this->input->post('idmailclient');
 		$message = $this->input->post('reponse');
@@ -105,7 +114,7 @@ class Mail extends CI_Controller {
 
 		// var_dump($_FILES['piecejointe']);
 		
-		if(isset($_FILES['piecejointe'])){
+		if($_FILES['piecejointe']['name']!=""){
 			$pj = $this->upload_file();
 			$this->Mail_modele->copierPdf($pj);
 		}
@@ -118,6 +127,25 @@ class Mail extends CI_Controller {
 
 		redirect("Mail/versAfficheMessages?idclient=".$idclient);
 	}
+
+	public function envoieMailRetour(){
+		$erreur = $this->input->get('erreur');
+		$erreur = $erreur."Voulez vous Poursuivre?";
+		$idclient = $this->input->get('idclient');
+
+		// var_dump($idclient);
+
+		$societe = $this->Generalisation->avoirTableSpecifique("client", "*", sprintf("idclient='%s'", $idclient));
+
+		$mail  =  $this->Connexion->avoirTableConditionnee(sprintf("adressemail where adressemail='%s'", $societe[0]->adressemail));
+
+		var_dump($mail);
+
+		$retour = $this->Mail_modele->envoieMail($mail[0]['idadressemail'], $erreur, "");
+
+		redirect("Mail/versAfficheMessages?idclient=".$idclient);
+	}
+
 
 	// public envoyerMailDepartement(){
 
