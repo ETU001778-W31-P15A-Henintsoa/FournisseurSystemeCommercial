@@ -179,19 +179,19 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="" class="menu-link">
-                    <div data-i18n="Basic">Envoie Mail</div>
+                  <a href=<?php echo site_url('mail/versListeClient'); ?> class="menu-link">
+                    <!-- <i class="menu-icon tf-icons bx bx-lock-open-alt"></i> -->
+                    <div data-i18n="Authentications">Messages/Mail Clients</div>
                   </a>
-                </li>
-              </ul>
-            </li>
-            
-            <li class="menu-item">
-                <a href=<?php echo site_url('mail/versListeClient'); ?> class="menu-link">
+              </li>
+
+              <li class="menu-item">
+                <a href=<?php echo site_url('mail/versListeDepartement'); ?> class="menu-link">
                   <!-- <i class="menu-icon tf-icons bx bx-lock-open-alt"></i> -->
-                  <div data-i18n="Authentications">Messages/Mail</div>
+                  <div data-i18n="Authentications">Messages/Mail Departements</div>
                 </a>
             </li>
+              </ul>
 
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">

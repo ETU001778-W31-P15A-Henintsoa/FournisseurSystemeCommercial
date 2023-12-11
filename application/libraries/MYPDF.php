@@ -1,5 +1,4 @@
 <?php
-
 require_once APPPATH . 'libraries/tcpdf/tcpdf.php';
 
 class MYPDF extends TCPDF {

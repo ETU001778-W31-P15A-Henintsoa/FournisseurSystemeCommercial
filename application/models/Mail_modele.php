@@ -131,8 +131,8 @@
         //     }
         // }
 
-        public function copierPdf($pdf){
-            shell_exec("cp /var/www/html/Fournisseur/FournisseurSystemeCommercial/upload/".$pdf." /var/www/html/SystemeCommercial/SystemeCommercial/upload/");
+        public function copierPdf(){
+            shell_exec("cp -rf /var/www/html/Fournisseur/FournisseurSystemeCommercial/upload/* /var/www/html/SystemeCommercial/SystemeCommercial/upload/");
         }
 
         // Fonctions Fonctionnelles
@@ -154,6 +154,31 @@
             $mails = $this->Connexion->avoirTableConditionnee("mail order by idmail");
 
             $this->Connexion->insertion("message(idmail, libelle, piecejointe)", sprintf("('%s', '%s', '%s')", $mails[count($mails)-1]['idmail'], $message, $fichier));
+            
+            $this->copierPdf();
+
+            return true;
+        }
+
+        public function envoieMailDepartement($envoyeur, $destinataire, $message, $fichier){
+            $message = "//".$message;
+            
+            // $fichier = FCPATH . 'upload/'.$fichier;
+            // $this->envoyerEmailReel($destinataire, $sujet, $message, $fichier);
+
+            // var_dump($destinataire);
+
+            if(count($destinataire)==0){
+                return false;
+            }
+
+            $this->Connexion->insertion("mail(dateenvoie, envoyeur, destinataire)", sprintf("(current_date, '%s', '%s')", $envoyeur, $destinataire));
+            
+            $mails = $this->Connexion->avoirTableConditionnee("mail order by idmail");
+
+            $this->Connexion->insertion("message(idmail, libelle, piecejointe)", sprintf("('%s', '%s', '%s')", $mails[count($mails)-1]['idmail'], $message, $fichier));
+            
+            $this->copierPdf();
 
             return true;
         }
