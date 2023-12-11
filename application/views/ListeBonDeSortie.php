@@ -29,6 +29,7 @@
                             <td><?= $bondeSortie[$i]->dateinsertion; ?></td>
                             <td><?= $bondeSortie[$i]->idbondecommande; ?></td>
                             <td><span class="badge bg-label-warning me-1"><a  href="<?php echo site_url("BonDeSortie/versDetailBonDeSortie?idbondesortie=").$bondeSortie[$i]->idbondesortie; ?>">Voir Detail</a></span></td>
+                            <td><span class="badge bg-label-warning me-1"><a  href="<?php echo site_url("BonDeSortie/versBonDeSortiePDF?idbondesortie=").$bondeSortie[$i]->idbondesortie; ?>">Generer PDF</a></span></td>
                             <td><span class="badge bg-label-warning me-1"><a  href="<?php echo site_url("BonDeLivraison/versDateLivraison?idbondesortie=").$bondeSortie[$i]->idbondesortie; ?>">Generer Bon de Livraison</a></span></td>
                         </tr>
                         <?php } ?>  
