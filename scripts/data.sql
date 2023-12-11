@@ -41,3 +41,44 @@ update Article set categorie='CAT3' where idarticle='ART3';
 update stock set dateinsertion='2023-11-21' where idstock='STO1';
 update stock set dateinsertion='2023-11-21' where idstock='STO2';
 update stock set dateinsertion='2023-11-21' where idstock='STO3';
+
+ ----------------------------------------------departement-------------------------------------------------
+INSERT INTO Departement (nomDepartement)
+VALUES
+    ('logistique'),
+    ('Service livraison'),
+    ('Finance');
+
+ ----------------------------------------------departement-------------------------------------------------
+INSERT INTO Employe (nom, prenom, adresse, matricule, dateNaissance, mail, motDePasse, etat)
+VALUES
+  ('Ariette', 'Loyola', '123 Rue de la Sarbone', 'MAT12345', '1990-05-15', 'ariette@email.com', 'mdp1234', 1),
+  ('Stanley', 'Judi', '123 Rue de la Sarbone', 'MAT12345', '1990-05-15', 'stanley@email.com', 'mdp12345', 1),
+  ('Roberto', 'Jackson', '123 Rue de la Sarbone', 'MAT12345', '1990-05-15', 'roberto@email.com', 'mdp123456', 1);
+
+-----------------------------------------------Branche----------------------------------------------------------
+INSERT INTO Branche (nomBranche,salaireMax, salaireMin, njHParPersonne, mission, descriptionPoste)
+VALUES
+    ('Magasinier',50000.00, 30000.00, 8.0, 'Reponsable des stocks de produits', 'Gestion de sortie et entré des stocks'),
+    ('Livreur',50000.00, 30000.00, 8.0, 'Livraison des produits des clients', 'Vous devez vous assurez que chaque produit arrive bien à destination'),
+    ('Comptable',50000.00, 30000.00, 8.0, 'Assure le bon fonctionnement des activités financières', 'Analyste financier responsable de lanalyse des états financiers');
+
+-----------------------------------------------BrancheDepartement-------------------------------------------------
+insert into brancheDepartement(idBranche,idDepartement) values
+('BRA1','DEPT1'),
+('BRA2','DEPT2'),
+('BRA3','DEPT3');
+
+--------------------------------------Poste EMploye-----------------------------------------------------------
+insert into employePoste(idBrancheDepartement,dateEmbauche,idEmploye) values
+('BDEPT1','2021-02-04','EMP1'),
+('BDEPT2','2020-02-04','EMP2'),
+('BDEPT3','2022-02-04','EMP3');
+
+-- --------------------------------------Validation-----------------------------------------------------------
+insert into validation(idBrancheDepartement,libelle) values
+('BDEPT1','magasin');
+insert into validation(idBrancheDepartement,libelle) values
+('BDEPT2','livraison');
+insert into validation(idBrancheDepartement,libelle) values
+('BDEPT3','vente');

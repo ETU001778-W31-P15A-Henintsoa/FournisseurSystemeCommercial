@@ -31,7 +31,7 @@
                             <td><?= $facture[$i]->idbondecommande; ?></td>
                             <td><?= $facture[$i]->paiement." jours"; ?></td>
                             <td><span class="badge bg-label-warning me-1"><a  href="<?php echo site_url("Facture/versDetailFacture?idFacture=").$facture[$i]->idfacture; ?>">Voir Detail</a></span></td>
-                            
+                            <td><span class="badge bg-label-warning me-1"><a  href="<?php echo site_url("Facture/versPDFFacture?idFacture=").$facture[$i]->idfacture; ?>">Generer PDF</a></span></td>
                         </tr>
                         <?php } ?>  
                       </tbody>

@@ -4,9 +4,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class BonDeLivraison extends CI_Controller {
 
     public function versDateLivraison() {
-        $data['idbondesortie'] = $this->input->get('idbondesortie');
-        $this->load->view('header');
-        $this->load->view('GenererLivraison',$data);
+        $idEmploye = $_SESSION['user'];
+        $employePoste=$this->Generalisation->avoirTableSpecifique("v_posteEmployeValidation","*"," idemploye='".$idEmploye."'");
+        if($employePoste[0]->libelle == "livraison"){
+            $data['idbondesortie'] = $this->input->get('idbondesortie');
+            $this->load->view('header');
+            $this->load->view('GenererLivraison',$data);
+        }else {
+            $data["error"]="Vous n'avez pas accès à cette page";
+            $this->load->view('header');
+            $this->load->view('errors/Erreur',$data);
+        }
     }
 
     public function genererBonDeLivraison() {
@@ -22,9 +30,17 @@ class BonDeLivraison extends CI_Controller {
     }
 
     public function versListeBonDeLivraison() {
-        $data['bondelivraison'] = $this->Generalisation->avoirTableConditionnee("v_bondelivraison");
-        $this->load->view('header');
-        $this->load->view('ListeBonDeLivraison',$data);
+        $idEmploye = $_SESSION['user'];
+        $employePoste=$this->Generalisation->avoirTableSpecifique("v_posteEmployeValidation","*"," idemploye='".$idEmploye."'");
+        if($employePoste[0]->libelle == "livraison"){
+            $data['bondelivraison'] = $this->Generalisation->avoirTableConditionnee("v_bondelivraison");
+            $this->load->view('header');
+            $this->load->view('ListeBonDeLivraison',$data);
+        }else {
+            $data["error"]="Vous n'avez pas accès à cette page";
+            $this->load->view('header');
+            $this->load->view('errors/Erreur',$data);
+        }
     }
 
     public function versDetailBonDeLivraison() {
@@ -33,5 +49,13 @@ class BonDeLivraison extends CI_Controller {
         $this->load->view('header');
         $this->load->view('DetailBonDeLivraison',$data);
     }
- 
+    
+    public function versLivraisonPDF() {
+        $idbondelivraison = $this->input->get('idbondelivraison');
+        try {
+            $this->BonDeLivraison_modele->genererBonDeLivraisonPDF($idbondelivraison);
+        } catch (Exception $e) {
+            echo 'Exception : ',  $e->getMessage(), "\n";
+        }
+    }
 }

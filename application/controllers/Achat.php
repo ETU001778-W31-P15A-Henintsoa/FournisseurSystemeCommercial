@@ -27,10 +27,13 @@
         public function versMarge() {
             $datedebut = $this->input->post('datedebut');
             $datefin = $this->input->post('datefin');
-            $article = $this->Generalisation->avoirTableAutrement("v_mouvement","DISTINCT(idarticle)","");
+            $article = $this->Generalisation->avoirTableAutrement("v_mouvement","idarticle","");
             $sommeSortiePrixVente = 0;
             $prixVente = 0;
             $sommeSortiePrixStock = 0;
+            $data['margeArticle'] =[];
+            $data['parVente'] = [];
+            $data['parStock'] = [];
             for($i=0;$i<count($article);$i++) {
                 $prixVente = $this->Marge_modele->calculPrixDeVente($article[$i]->idarticle);
                 $sortie = $this->Marge_modele->avoirTotalSortie($datedebut,$datefin,$article[$i]->idarticle);
@@ -38,13 +41,25 @@
                 $sommeSortiePrixVente += $sortiePrixVente;
                 $detailSortie = $this->Generalisation->avoirTableSpecifique("v_mouvement","*","datemouvement BETWEEN '".$datedebut."' and '".$datefin."' and idarticle='".$article[$i]->idarticle."'");
                 for($j=0;$j<count($detailSortie);$j++) {
-                    $sortiePrixStock = $detailSortie[$j]->quantite * $detailSortie[$j]->prixunitaire;
+                    $sortiePrixStock = $detailSortie[$j]->quantiteretirer * $detailSortie[$j]->prixunitaire;
                 }
                 $sommeSortiePrixStock += $sortiePrixStock;
-                
+                $data['margeArticle'][$i] = $sortiePrixVente - $sortiePrixStock;
             }
+            
+            $data['prixVenteDetail'] = [];
             $margeBrute = $sommeSortiePrixVente - $sommeSortiePrixStock;
-            echo "margeBrute ".$margeBrute;
+            $data['margeBrute'] = $margeBrute;
+            $data['detail'] = $this->Generalisation->avoirTableSpecifique("v_mouvement","*","datemouvement BETWEEN '".$datedebut."' and '".$datefin."'");
+            for($j=0;$j<count($data['detail']);$j++){
+                $data['prixVenteDetail'][$j] = $this->Marge_modele->calculPrixDeVente($data['detail'][$j]->idarticle);
+                $data['parVente'][$j] = $data['margeArticle'][$j] / $sortiePrixVente;
+                $data['parStock'][$j] = $data['margeArticle'][$j] / $sortiePrixStock;
+            }
+            $data['datedebut'] = $datedebut;
+            $data['datefin'] = $datefin;
+            $this->load->view('header');
+            $this->load->view('AffichageMarge',$data);
         }
         
     }

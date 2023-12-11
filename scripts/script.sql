@@ -234,3 +234,12 @@ create table Mouvement(
     quantiteretirer float,
     foreign key(idStock) references Stock(idStock)
 );
+
+-- ---------------------------------santatra 11-12-2023--------------------------
+create sequence seqValidation;
+create table validation(
+    idValidation varchar(20) default concat('VAL'|| nextval('seqValidation')) primary key,
+    idBrancheDepartement varchar(20),
+    libelle varchar(40),
+    foreign key(idBrancheDepartement) references brancheDepartement(idBrancheDepartement)
+);

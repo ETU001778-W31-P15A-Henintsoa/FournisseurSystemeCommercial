@@ -30,7 +30,8 @@
                             <td><?= $bondelivraison[$i]->idbondecommande; ?></td>
                             <td><?= $bondelivraison[$i]->nom; ?></td>
                             <td><span class="badge bg-label-warning me-1"><a  href="<?php echo site_url("BonDeLivraison/versDetailBonDeLivraison?idbondelivraison=").$bondelivraison[$i]->idbondelivraison; ?>">Voir Detail</a></span></td>
-                        </tr>
+                            <td><span class="badge bg-label-warning me-1"><a  href="<?php echo site_url("BonDeLivraison/versLivraisonPDF?idbondelivraison=").$bondelivraison[$i]->idbondelivraison; ?>">Generer PDF</a></span></td>
+                          </tr>
                         <?php } ?>  
                       </tbody>
                   </table>

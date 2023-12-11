@@ -278,6 +278,20 @@
               </ul>
             </li>
 
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <!-- <i class="menu-icon tf-icons bx bx-lock-open-alt"></i> -->
+                <div data-i18n="Authentications">Authentications</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="<?php echo site_url('Login/deconnection') ?>" class="menu-link">
+                    <div data-i18n="Basic">Logout</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
           </ul>
         </aside>
         <!-- / Menu -->
